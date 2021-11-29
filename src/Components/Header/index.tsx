@@ -43,7 +43,7 @@ export const Header = () => {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar position='sticky' className={styles.header}>
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <AcUnitOutlined/>
