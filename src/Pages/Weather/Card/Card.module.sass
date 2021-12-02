@@ -1,3 +1,40 @@
-.container
+.card
   display: flex
+  flex-direction: column
+  align-items: center
   margin: 1rem
+  min-width: 200px
+  min-height: 250px
+  background-color: #fff
+  border-radius: 7px
+  box-shadow: 0.3px 0.3px 0.3px 1px rgba(0, 0, 0, 0.2)
+  font-family: 'Roboto', sans-serif
+
+  &Tools
+    display: flex
+    justify-content: flex-end
+    height: 10%
+    width: 100%
+    border-radius: 7px
+
+  &City
+    color: gray
+    font-size: 26px
+    padding-top: 1rem
+
+  &Date
+    color: gray
+    font-size: 20px
+    line-height: 40px
+
+  &Sun
+    display: inline
+    margin-left: 35px
+    width: 30px
+    height: 30px
+    background: #FFC107
+    border-radius: 50%
+
+  &Temp
+    font-size: 50px
+
