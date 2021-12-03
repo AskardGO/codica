@@ -6,6 +6,11 @@ import styles from './Card.module.sass'
 
 type Props = {};
 export const WeatherCard = () => {
+
+    const updateData = () => {
+
+    }
+
     return (
         <div className={styles.card}>
             <div className={styles.cardTools}>

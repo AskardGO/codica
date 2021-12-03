@@ -1,26 +1,26 @@
 import React from 'react';
 import {Button} from "@mui/material";
 import {store} from "../../app/store";
-import {decrement, increment} from "../../app/actions";
+import {addCity} from "../../app/actions";
+import {useDispatch} from "react-redux";
 
 export const Home = () => {
 
-    const [num, setNum] = React.useState(store.getState().value)
+    const [state, setState] = React.useState(store.getState())
+
+    const dispatch = useDispatch()
 
     React.useEffect(() => {
-        console.log(num)
-    }, [num])
+        alert(store.getState())
+    })
 
     return (
         <div>
-            <Button onClick={() => store.dispatch(decrement())}>
-                -
-            </Button>
+            <Button onClick={() => {
+                 store.dispatch(addCity({cityName: 'London', countryTag: 'GB'}))
 
-            <span> {num} </span>
-
-            <Button onClick={() => store.dispatch(increment())}>
-                +
+            }}>
+                Add
             </Button>
         </div>
     );

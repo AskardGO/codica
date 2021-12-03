@@ -16,12 +16,10 @@ export const AddCityCard = () => {
     const handleClose = () => setIsModalVisible(false)
 
     const handleSave = () => {
-        console.log('city', city)
         if(city) {
 
             (async () => {
                 const data = await getWeatherByCityName(city.name, city.countryCode)
-                console.log(data)
             })()
         }
     }

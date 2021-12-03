@@ -1,19 +1,17 @@
 import {createStore} from "redux";
-import {INCREMENT, DECREMENT} from "./types";
+import {reducers, cities} from "./reducers";
+import {Store} from "./types/storeType";
 
-type Store = {
-    value: number
+const reducer = ({type, state}: {type: string, state: number}): any => {
+    switch (type) {
+        case ('UP'):
+            return state + 1
+        case ('DOWN'):
+            return state - 1
+    }
 }
 
-export const store = createStore(
-    (state: Store = { value: 0 }, action) => {
-        switch (action.type) {
-            case INCREMENT:
-                return { value: state.value + 1 }
-            case DECREMENT:
-                return { value: state.value - 1 }
-            default:
-                return state;
-        }
-    }
-)
+const st: any = 0
+
+// @ts-ignore
+export const store = createStore(cities)

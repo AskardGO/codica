@@ -1,13 +1,18 @@
-import {DECREMENT, INCREMENT} from "./types";
+import {CITY} from "./reducerTypes";
 
-export function increment() {
+export function addCity({cityName, countryTag}: any) {
     return {
-        type: INCREMENT
+        type: 'ADD_CITY' as const,
+        payload: {
+            cityName: cityName,
+            countryTag: countryTag
+        }
     }
 }
 
-export function decrement() {
+export function deleteCity(id: number) {
     return {
-        type: DECREMENT
+        type: CITY.DEL_CITY,
+        id: id
     }
 }
