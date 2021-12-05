@@ -7,8 +7,8 @@ import {
 
 import {Header} from "../Header";
 
-import {Weather} from "../../Pages/Weather";
-import {Home} from "../../Pages/Home";
+import {Weather} from "../../pages/Weather";
+import {Home} from "../../pages/Home";
 
 export const Navigation = () => {
     return (

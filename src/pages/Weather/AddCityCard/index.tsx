@@ -4,40 +4,39 @@ import styles from './AddCityCard.module.sass';
 import {Box, Card, Typography, Modal, Button} from "@mui/material";
 import AddIcon from '@mui/icons-material/Add';
 import {Search} from "./SearchComponent";
-import {getWeatherByCityName} from "../../../app/services";
+import {getWeatherByCityName} from "../../../services/services";
 import {CityTypes} from "../PropsTypes";
+import {useActions} from "../../../hooks/useActions";
 
 export const AddCityCard = () => {
 
     const [isModalVisible, setIsModalVisible] = React.useState<boolean>(false)
     const [city, setCity] = React.useState<CityTypes | null>(null)
 
-    const handleOpen = () => setIsModalVisible(true)
-    const handleClose = () => setIsModalVisible(false)
+    const handleModalVisible = () => setIsModalVisible(!isModalVisible)
+
+    const {citiesActions} = useActions()
 
     const handleSave = () => {
-        console.log('city', city)
-        if(city) {
-
-            (async () => {
-                const data = await getWeatherByCityName(city.name, city.countryCode)
-                console.log(data)
-            })()
-        }
+        if(city) citiesActions.addCity({name: city.name, tag: city.countryCode})
+        //     (async () => {
+        //         const data = await getWeatherByCityName(city.name, city.countryCode)
+        //     })()
+        // }
     }
 
     return (
         <>
             <Card className={styles.container}
                   sx={{ minWidth: 200, minHeight: 250 }}
-                  onClick={handleOpen}
+                  onClick={handleModalVisible}
             >
                 <AddIcon color='action' titleAccess='Add City'/>
             </Card>
             <Modal
                 className={styles.modal}
                 open={isModalVisible}
-                onClose={handleClose}
+                onClose={handleModalVisible}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >

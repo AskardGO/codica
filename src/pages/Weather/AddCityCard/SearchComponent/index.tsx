@@ -1,6 +1,6 @@
 import React from 'react';
 import {Autocomplete, TextField} from "@mui/material";
-import {getCities} from "../../../../app/services";
+import {getCities} from "../../../../services/services";
 import {CityTypes} from "../../PropsTypes";
 
 type Props = {

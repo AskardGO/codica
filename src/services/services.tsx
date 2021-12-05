@@ -9,13 +9,8 @@ export const getCities = (partOfName: string) => {
         .catch((err) => [null, err])
 }
 
-export const getWeatherByCityName = (city: string, country: string) => {
-    console.log('log', city)
-    return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${API_ID}`)
-        .then((data) => {
-            console.log("data", data)
-        })
-        .catch((err) => {
-            console.log("err", err)
-        })
+export const getWeatherByCityName = (name: string, tag: string) => {
+    return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${name},${tag}&appid=${API_ID}`)
+        .then((data) => [data.data, null])
+        .catch((err) => [null, err])
 }
