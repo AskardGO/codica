@@ -15,25 +15,10 @@ export const AddCityCard = () => {
 
     const handleModalVisible = () => setIsModalVisible(!isModalVisible)
 
-<<<<<<< HEAD:src/Pages/Weather/AddCityCard/index.tsx
-    const handleSave = () => {
-        if(city) {
-
-            (async () => {
-                const data = await getWeatherByCityName(city.name, city.countryCode)
-            })()
-        }
-=======
     const {citiesActions} = useActions()
 
     const handleSave = () => {
-        if(city) citiesActions.addCity({name: city.name, tag: city.countryCode})
-        //     (async () => {
-        //         const data = await getWeatherByCityName(city.name, city.countryCode)
-        //     })()
-        // }
->>>>>>> 58e4ee1 (update store and ability of update data on card):src/pages/Weather/AddCityCard/index.tsx
-    }
+        if(city) citiesActions.addCity({name: city.name, tag: city.countryCode})}
 
     return (
         <>
