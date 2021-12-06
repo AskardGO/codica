@@ -12,10 +12,6 @@ type Props = {
 };
 export const WeatherPopover = ({isOpen, setIsOpen, el}: Props) => {
 
-    React.useEffect(() => {
-        console.log(el)
-    })
-
     return (
         <Popover
             style={{userSelect: 'none', pointerEvents: 'none', position: 'absolute'}}
