@@ -9,6 +9,7 @@ import {Header} from "../Header";
 
 import {Weather} from "../../pages/Weather";
 import {Home} from "../../pages/Home";
+import {WeatherChart} from "../../pages/WeatherCharts";
 
 export const Navigation = () => {
     return (
@@ -17,6 +18,7 @@ export const Navigation = () => {
             <Routes>
                 <Route path="/weather" element={<Weather/>}/>
                 <Route path="/" element={<Home/>}/>
+                <Route key='city-weather' path='/weather/:id' element={<WeatherChart/>}/>
             </Routes>
         </Router>
     );

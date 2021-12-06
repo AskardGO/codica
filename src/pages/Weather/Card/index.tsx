@@ -3,9 +3,11 @@ import {City} from "../../../store/reducers/cities";
 
 import styles from './Card.module.sass'
 import {Autorenew, Refresh} from "@mui/icons-material";
-import {CircularProgress} from "@mui/material";
+import {Button, CircularProgress} from "@mui/material";
 
 import {getWeatherByCityName} from "../../../services/services";
+import {DeleteCityButton} from "../DeleteCityButton";
+import {Link} from "react-router-dom";
 
 
 type Weather = {
@@ -24,7 +26,11 @@ type Weather = {
     }
 }
 
-export const WeatherCard = ({name, tag}: City) => {
+interface Props extends City {
+    index: number
+}
+
+export const WeatherCard = ({name, tag, index}: Props) => {
 
     const [state, setState] = React.useState<Weather | null>(null)
     const [isLoad, setIsLoad] = React.useState<boolean>(true)
@@ -77,13 +83,28 @@ export const WeatherCard = ({name, tag}: City) => {
                             <CircularProgress/> :
                             <>
                                 <div className={styles.cardTools}>
-                                    <img src={`http://openweathermap.org/img/w/${state.metaData.icon}.png`} alt='Weather Icon'/>
-                                    <Refresh className={styles.cardToolsRefresh} onClick={updateData}/>
+                                    <img src={`http://openweathermap.org/img/w/${state.metaData.icon}.png`}
+                                         alt='Weather Icon'/>
+                                    <div className={styles.tools}>
+                                        <DeleteCityButton index={index}/>
+                                        <Refresh className={styles.cardToolsRefresh} onClick={updateData}/>
+                                    </div>
+
                                 </div>
                                 <div className={styles.cardCity}> {state.name} </div>
                                 <div className="weather">
                                     <div className={styles.cardTemp}>{state.main.temp}°C</div>
                                 </div>
+                                <Button className={styles.cardButton}>
+                                    <Link key={state.name}
+                                          to={{
+                                              pathname: '/weather/' + state.name,
+                                          }}
+                                          state={{...state, tag}}
+                                    >
+                                        More...
+                                    </Link>
+                                </Button>
                             </>
                     }
                 </div>

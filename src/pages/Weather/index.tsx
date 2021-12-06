@@ -1,8 +1,9 @@
 import React from 'react';
-import styles from './weather.module.sass'
+import styles from './Weather.module.sass'
+
 import {WeatherCard} from "./Card";
 import {AddCityCard} from "./AddCityCard";
-import {store} from "../../store";
+
 import {useTypeSelector} from "../../hooks/useTypeSelector";
 
 export const Weather = () => {
@@ -17,7 +18,7 @@ export const Weather = () => {
         <div className={styles.container}>
             <div className={styles.containerList}>
                 {
-                    cities.map((el) => <WeatherCard key={el.name} {...el}/>)
+                    cities.map((el, index) => <WeatherCard key={el.name} {...el} index={index}/>)
                 }
                 <AddCityCard/>
             </div>
