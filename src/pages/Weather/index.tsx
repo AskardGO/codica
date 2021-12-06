@@ -19,7 +19,7 @@ export const Weather = () => {
                 {
                     cities.map((el) => <WeatherCard key={el.name} {...el}/>)
                 }
-                    <AddCityCard/>
+                <AddCityCard/>
             </div>
         </div>
     );
