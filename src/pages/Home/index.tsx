@@ -1,19 +1,10 @@
 import React from 'react';
-import {Button} from "@mui/material";
 
-//hooks
-import {useTypeSelector} from "../../hooks/useTypeSelector";
-import {useActions} from "../../hooks/useActions";
-
-export const Home = () => {
-
-    const {citiesActions} = useActions()
-
+type Props = {};
+export const Home = (props: Props) => {
     return (
         <div>
-            <Button onClick={() => citiesActions.addCity({name: 'London', tag: 'GB'})}>
-                Add
-            </Button>
+            Home
         </div>
     );
 };
