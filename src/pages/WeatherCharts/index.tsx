@@ -6,7 +6,7 @@ import styles from './WeatherCharts.module.sass'
 import {getHourlyWeatherByCityName} from "../../services/services";
 import {convertTemp} from "../../components/convert/convertTemperature";
 
-import {CircularProgress, Paper} from "@mui/material";
+import {CircularProgress, Paper, Typography} from "@mui/material";
 import {convertTime} from "../../components/convert/convertTime";
 import {WeatherPopover} from "./WeatherPopover";
 import {HourlyWeatherType} from "../../types";
@@ -50,19 +50,19 @@ export const WeatherChart = () => {
         )
     }
 
-    const loader = () => {
-
-    }
-
-
     return (
         <div className={styles.container}>
             {
                 isLoad?<CircularProgress/>:
-                    <Paper className={styles.containerChart} elevation={3}>
-                        <div className={styles.containerChartZero}/>
-                        <Blocks/>
-                    </Paper>
+                    <>
+                        <Typography variant="h3" gutterBottom component="div">
+                            {location.state.name}
+                        </Typography>
+                        <Paper className={styles.containerChart} elevation={3}>
+                            <div className={styles.containerChartZero}/>
+                            <Blocks/>
+                        </Paper>
+                    </>
             }
         </div>
     );
