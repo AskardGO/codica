@@ -46,9 +46,6 @@ export const WeatherPopover = ({isOpen, setIsOpen, el}: Props) => {
                     Rain: {el.rain['1h']}
                 </Typography>
             }
-            <Typography sx={{p: 1}}>
-                Pressure: {el.pressure}
-            </Typography>
             <Typography sx={{p: 1,display: 'flex', alignItems: 'center'}}>
                     Wind: <ArrowUpwardIcon sx={{m: 0}} style={{transform: `rotate(${el.wind_deg}deg)`}} fontSize='small'/> {el.wind_speed} m/s
             </Typography>
