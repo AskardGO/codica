@@ -23,6 +23,10 @@ type Weather = {
     metaData: {
         icon: string
         meta: string
+        coord: {
+            lat: number
+            lon: number
+        }
     }
 }
 
@@ -40,7 +44,8 @@ export const WeatherCard = ({name, tag, index}: Props) => {
     }, [])
 
     React.useEffect(() => {
-        if (state) {
+        if (state)
+        {
             setTimeout(() => {
                 setIsLoad(false)
             }, 2000)
@@ -62,10 +67,13 @@ export const WeatherCard = ({name, tag, index}: Props) => {
                 }
             })
 
+            console.log(data[0])
+
             setState({
                 name: data[0].name, main, metaData: {
                     icon: data[0].weather[0].icon,
-                    meta: ''
+                    meta: data[0].weather[0].main,
+                    coord: data[0].coord
                 }
             })
         } else {
@@ -84,7 +92,7 @@ export const WeatherCard = ({name, tag, index}: Props) => {
                             <>
                                 <div className={styles.cardTools}>
                                     <img src={`http://openweathermap.org/img/w/${state.metaData.icon}.png`}
-                                         alt='Weather Icon'/>
+                                         alt='Weather Icon' title={state.metaData.meta}/>
                                     <div className={styles.tools}>
                                         <DeleteCityButton index={index}/>
                                         <Refresh className={styles.cardToolsRefresh} onClick={updateData}/>

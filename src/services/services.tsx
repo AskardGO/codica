@@ -1,4 +1,5 @@
 import axios from "axios";
+import {Coords} from "../types";
 
 const API_URL = "https://samples.openweathermap.org/data/2.5/forecast"
 const API_ID = '44c6869e5d3deb1e79c7d3ac8944e2ef'
@@ -11,6 +12,18 @@ export const getCities = (partOfName: string) => {
 
 export const getWeatherByCityName = (name: string, tag: string) => {
     return axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${name},${tag}&appid=${API_ID}`)
+        .then((data) => [data.data, null])
+        .catch((err) => [null, err])
+}
+
+export const getWeatherByCoords = ({lon, lat}:Coords) => {
+    return axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_ID}`)
+        .then((data) => [data.data, null])
+        .catch((err) => [null, err])
+}
+
+export const getHourlyWeatherByCityName = ({lon, lat}:Coords) => {
+    return axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly}&appid=${API_ID}`)
         .then((data) => [data.data, null])
         .catch((err) => [null, err])
 }
